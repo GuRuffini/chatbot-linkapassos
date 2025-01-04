@@ -1,15 +1,13 @@
 from chatbot.assistant import create_assistant
 
-def create_thread():
+def create_thread(existing_messages=None):
     """
-    Cria uma thread com o contexto inicial do assistente.
+    Cria ou recupera uma thread com o contexto do assistente.
     """
     try:
         assistant = create_assistant()
 
-        messages = [
-            {"role": "system", "content": assistant.instructions}
-        ]
+        messages = existing_messages or [{"role": "system", "content": assistant.instructions}]
 
         return messages
     except Exception as e:

@@ -79,3 +79,21 @@ class Communication(models.Model):
 
     def __str__(self):
         return self.tone
+
+
+class ChatHistory(models.Model):
+    session_id = models.CharField(max_length=255, unique=True, verbose_name="ID da Sessão", help_text="Identificador único da sessão do usuário.")
+    messages = models.JSONField(default=list, verbose_name="Histórico de Mensagens", help_text="Armazena o histórico completo de mensagens em formato JSON.")
+    communication = models.ForeignKey('chatbot.Communication', on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Tom de Comunicação", help_text="Define o tom de comunicação usado nessa sessão.")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Data de Criação", help_text="Data em que o histórico foi criado.")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="Última Atualização", help_text="Data da última atualização no histórico.")
+
+    class Meta:
+        app_label = 'chatbot'
+        verbose_name = "Histórico de Conversa"
+        verbose_name_plural = "Históricos de Conversa"
+        ordering = ['-created_at']
+        db_table = 'chatbot_chat_history'
+
+    def __str__(self):
+        return f"Histórico da Sessão {self.session_id}"

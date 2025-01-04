@@ -13,7 +13,6 @@
     <!-- Pré-carregamento de imagens para melhor desempenho -->
     <link rel="preload" href="{% static 'assets/img/logo-chatbot.svg' %}" as="image">
     <link rel="preload" href="{% static 'assets/img/icone-chatbot.svg' %}" as="image">
-    <!-- <link rel="preload" href="{% static 'assets/img/icone-perfil.svg' %}" as="image"> -->
     <link rel="preload" href="{% static 'assets/img/icone-enviar.svg' %}" as="image">
     <link rel="preload" href="{% static 'assets/img/icone-mais.svg' %}" as="image">
 
@@ -28,37 +27,37 @@
             alt="Logo do assistente virtual EcoMart" 
             class="cabecalho__logo">
         <div class="cabecalho__acoes">
-            <!-- Ações do cabeçalho podem ser adicionadas aqui -->
+            <!-- Opções adicionais podem ser adicionadas -->
         </div>
     </header>
 
     <!-- Conteúdo principal -->
     <main class="main">
         <!-- Chat -->
-        <section class="chat container" id="chat">
+        <section class="chat container" id="chat" aria-live="polite">
             <p class="chat__bolha chat__bolha--bot">
                 Olá! Eu sou o assistente virtual da EcoMart<br><br>
                 Como posso te ajudar?
             </p>
         </section>
 
-        <!-- Campo de entrada de mensagem -->
+        <!-- Campo de entrada -->
         <section class="entrada container">
             <div class="entrada__container">
-                <button id="mais_arquivo" aria-label="Botão para anexar arquivos">
-                    <i class="icone icone--mais-opcoes"></i>
+                <button id="mais_arquivo" aria-label="Anexar arquivos">
+                    <img src="{% static 'assets/img/icone-mais.svg' %}" alt="Ícone de anexar">
                 </button>
                 <input 
                     type="text" 
                     class="entrada__input" 
-                    placeholder="Digite sua mensagem aqui" 
+                    placeholder="Digite sua mensagem" 
                     id="input" 
-                    aria-label="Campo para digitar uma mensagem">
+                    aria-label="Campo para digitar mensagem">
                 <button aria-label="Enviar mensagem" id="botao-enviar">
                     <img 
                         class="icone icone--enviar-mensagem" 
                         src="{% static 'assets/img/icone-enviar.svg' %}" 
-                        alt="Ícone de enviar mensagem">
+                        alt="Enviar">
                 </button>
             </div>
         </section>
@@ -66,6 +65,7 @@
 
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="{% static 'assets/js/index.js' %}"></script>
 </body>
 </html>
