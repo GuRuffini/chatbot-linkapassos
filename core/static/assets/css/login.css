@@ -1,0 +1,78 @@
+@import url('_reset.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to bottom, #01080E, #144480);
+    font-family: 'Inter', sans-serif;
+    color: #FFFFFF;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1C5296;
+    border-radius: 10px;
+    padding: 2rem 3rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.login__logo img {
+    width: 120px;
+    margin-bottom: 2rem;
+}
+
+.login__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.login__group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.login__group label {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.login__group input {
+    height: 3rem;
+    padding: 0 1rem;
+    border-radius: 5px;
+    border: 1px solid #0C305C;
+    background-color: #144480;
+    color: #CED3E0;
+    font-size: 1rem;
+}
+
+.login__group input::placeholder {
+    color: #CED3E0;
+}
+
+.login__button {
+    background-color: #5385C3;
+    border: none;
+    border-radius: 5px;
+    height: 3rem;
+    color: #FFFFFF;
+    font-size: 1.125rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login__button:hover {
+    background-color: #3C6BA9;
+}

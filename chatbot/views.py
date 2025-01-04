@@ -6,9 +6,15 @@ import json
 
 def index(request):
     """
-    Renderiza a página inicial do chatbot.
+    Renderiza a página inicial.
     """
     return render(request, 'chatbot/index.html')
+
+def chatbot_view(request):
+    """
+    Renderiza a página do chatbot.
+    """
+    return render(request, 'chatbot/chatbot.html')
 
 @csrf_exempt
 def chat(request):
