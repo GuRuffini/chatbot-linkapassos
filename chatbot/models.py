@@ -17,25 +17,11 @@ class Assistant(models.Model):
     is_active = models.BooleanField(default=True, verbose_name="Ativo", help_text="Indica se o assistente está ativo para uso.")
 
     class Meta:
+        app_label = 'chatbot'
         verbose_name = "Assistente"
         verbose_name_plural = "Assistentes"
         ordering = ['id']
         db_table = 'chatbot_assistant'
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-
-    def has_changed(self):
-        if not self.pk:
-            return True
-        old_instance = Assistant.objects.filter(pk=self.pk).first()
-        if not old_instance:
-            return True
-
-        for field in self._meta.fields:
-            if getattr(self, field.name) != getattr(old_instance, field.name):
-                return True
-        return False
 
     def __str__(self):
         return self.name
@@ -52,25 +38,11 @@ class Role(models.Model):
     is_active = models.BooleanField(default=True, verbose_name="Ativo", help_text="Indica se o assistente está ativo para uso.")
 
     class Meta:
+        app_label = 'chatbot'
         verbose_name = "Regra"
         verbose_name_plural = "Regras"
         ordering = ['id']
         db_table = 'chatbot_role'
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-
-    def has_changed(self):
-        if not self.pk:
-            return True
-        old_instance = Role.objects.filter(pk=self.pk).first()
-        if not old_instance:
-            return True
-
-        for field in self._meta.fields:
-            if getattr(self, field.name) != getattr(old_instance, field.name):
-                return True
-        return False
 
     def __str__(self):
         return self.name
@@ -99,25 +71,11 @@ class Communication(models.Model):
     is_active = models.BooleanField(default=True, verbose_name="Ativo", help_text="Indica se o assistente está ativo para uso.")
 
     class Meta:
+        app_label = 'chatbot'
         verbose_name = "Tom de Comunicação"
         verbose_name_plural = "Tons de Comunicação"
         ordering = ['id']
         db_table = 'chatbot_communication'
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-
-    def has_changed(self):
-        if not self.pk:
-            return True
-        old_instance = Communication.objects.filter(pk=self.pk).first()
-        if not old_instance:
-            return True
-
-        for field in self._meta.fields:
-            if getattr(self, field.name) != getattr(old_instance, field.name):
-                return True
-        return False
 
     def __str__(self):
         return self.tone

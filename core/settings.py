@@ -30,7 +30,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'chatbot',
 ]
 
@@ -42,6 +41,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'chatbot.middleware.CurrentUserMiddleware',
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -130,3 +130,26 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Linkapassos",
+
+    "site_header": "Linkapassos",
+
+    "site_brand": "Linkapassos",
+
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+        "chatbot.Assistant": "fa-solid fa-robot",
+        "chatbot.Role": "fa-solid fa-user-shield",
+        "chatbot.Communication": "fa-solid fa-comments",
+    },
+
+    "welcome_sign": "Bem vindo ao Linkapassos",
+
+    "copyright": "Linkapassos LTDA",
+
+    # "show_ui_builder": "True",
+}
