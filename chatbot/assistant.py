@@ -33,10 +33,11 @@ def create_assistant():
     except Exception as e:
         raise RuntimeError(f"Erro ao criar o assistente: {e}")
 
-try:
-    car_sales_assistant = create_assistant()
-    print("Instructions:", car_sales_assistant.instructions)
-    print("Name:", car_sales_assistant.name)
-    print("Model:", car_sales_assistant.model)
-except Exception as e:
-    print(str(e))
+if __name__ == "__main__":
+    try:
+        car_sales_assistant = create_assistant()
+        print("Instructions:", car_sales_assistant.instructions)
+        print("Name:", car_sales_assistant.name)
+        print("Model:", car_sales_assistant.model)
+    except Exception as e:
+        print(f"Erro: {str(e)}")

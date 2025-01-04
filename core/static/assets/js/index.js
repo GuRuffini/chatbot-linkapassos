@@ -5,29 +5,28 @@ function getCsrfToken() {
 
 // Adiciona o CSRF token em todas as requisições fetch
 async function enviarMensagem() {
-    let input = document.querySelector('#input');
-    let chat = document.querySelector('#chat');
+    const input = document.querySelector('#input');
+    const chat = document.querySelector('#chat');
 
-    if (!input.value.trim()) return;
-    let mensagem = input.value.trim();
+    if (!input.value.trim()) return; // Impede mensagens vazias
+    const mensagem = input.value.trim();
     input.value = "";
 
-    // Cria e adiciona a bolha do usuário no chat
-    let novaBolhaUsuario = criaBolhaUsuario();
-    novaBolhaUsuario.innerHTML = mensagem;
-    chat.appendChild(novaBolhaUsuario);
+    // Adiciona a bolha do usuário no chat
+    const bolhaUsuario = criaBolhaUsuario(mensagem);
+    chat.appendChild(bolhaUsuario);
 
-    // Cria e adiciona a bolha do bot no chat
-    let novaBolhaBot = criaBolhaBot();
-    chat.appendChild(novaBolhaBot);
-    novaBolhaBot.innerHTML = "Analisando...";
-    
+    // Adiciona uma bolha "pensando" do bot no chat
+    const bolhaBot = criaBolhaBot("Analisando...");
+    chat.appendChild(bolhaBot);
+
+    // Envia a mensagem para o backend
     try {
-        const resposta = await fetch("/chat/", {
+        const resposta = await fetch("http://127.0.0.1:8000/chat/", { // Porta correta: 8000
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "X-CSRFToken": getCsrfToken(), // Inclui o token CSRF
+                "X-CSRFToken": getCsrfToken(),
             },
             body: JSON.stringify({ msg: mensagem }),
         });
@@ -37,24 +36,37 @@ async function enviarMensagem() {
         }
 
         const dados = await resposta.json();
-        novaBolhaBot.innerHTML = dados.resposta.replace(/\n/g, '<br>');
+        bolhaBot.innerHTML = dados.resposta.replace(/\n/g, '<br>');
     } catch (erro) {
         console.error("Erro ao enviar mensagem:", erro);
-        novaBolhaBot.innerHTML = "Ocorreu um erro ao processar sua mensagem. Tente novamente.";
+        bolhaBot.innerHTML = "Desculpe, ocorreu um erro ao processar sua mensagem. Tente novamente.";
     }
+
+    // Rola o chat automaticamente para a última mensagem
+    chat.scrollTop = chat.scrollHeight;
 }
 
 // Funções auxiliares para criar bolhas no chat
-function criaBolhaUsuario() {
-    let bolha = document.createElement('p');
+function criaBolhaUsuario(conteudo) {
+    const bolha = document.createElement('p');
     bolha.classList = 'chat__bolha chat__bolha--usuario';
+    bolha.innerHTML = conteudo;
     return bolha;
 }
 
-function criaBolhaBot() {
-    let bolha = document.createElement('p');
+function criaBolhaBot(conteudo = "") {
+    const bolha = document.createElement('p');
     bolha.classList = 'chat__bolha chat__bolha--bot';
+    bolha.innerHTML = conteudo;
     return bolha;
 }
 
+// Evento para enviar mensagem ao clicar no botão
 document.querySelector('#botao-enviar').addEventListener('click', enviarMensagem);
+
+// Permite enviar mensagem ao pressionar Enter
+document.querySelector('#input').addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        enviarMensagem();
+    }
+});
