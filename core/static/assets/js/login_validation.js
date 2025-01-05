@@ -2,7 +2,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
     const username = document.getElementById("id_username").value.trim();
     const password = document.getElementById("id_password").value.trim();
     const usernamePattern = /^[a-zA-Z0-9_.@-]{3,50}$/;
-    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/;
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+=-])[A-Za-z\d!@#$%^&*()_+=-]{8,100}$/;
 
     if (!username || !usernamePattern.test(username)) {
         e.preventDefault();

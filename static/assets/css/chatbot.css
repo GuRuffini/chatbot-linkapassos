@@ -4,7 +4,7 @@
 body {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     height: 100vh;
     background: linear-gradient(to bottom, #01080E, #144480);
     color: #FFFFFF;
@@ -23,6 +23,12 @@ body {
     }
 }
 
+.cabecalho-wrapper {
+    width: 100%;
+    border-bottom: 1px solid #1C5296;
+    box-sizing: border-box;
+}
+
 .cabecalho {
     display: flex;
     justify-content: space-between;
@@ -30,6 +36,9 @@ body {
     height: 5rem;
     border-bottom: 1px solid #1C5296;
     padding: 0 1rem;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .cabecalho__acoes {
@@ -125,6 +134,8 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
     max-height: calc(100vh - 10rem - 5rem);
     scrollbar-width: none;
     overflow-y: auto;
@@ -254,6 +265,8 @@ body {
 
 .entrada {
     width: 100%;
+
+    margin: 0 auto;
     height: 8rem;
     position: relative;
     display: flex;
@@ -264,19 +277,22 @@ body {
     padding: 1rem 1.5rem;
     background-color: #0C2444;
     z-index: 1;
+    box-sizing: border-box;
 }
 
 .entrada__container {
     display: flex;
     gap: 0.5rem;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    max-width: 1400px;
     padding: 0.5rem 1rem;
     background-color: #1C5296;
     border: 1px solid #0C305C;
     border-radius: 4rem;
-    align-items: center;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+    margin: 0 auto;
 }
 
 .entrada__input {
