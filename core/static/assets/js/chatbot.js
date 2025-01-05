@@ -30,7 +30,7 @@ async function enviarMensagem() {
             },
             body: JSON.stringify({
                 msg: mensagem,
-                communication_id: 1  // Exemplo de envio de ID do tom de comunicação
+                communication_id: 1
             }),
         });
 

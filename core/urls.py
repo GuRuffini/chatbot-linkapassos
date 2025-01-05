@@ -1,6 +1,6 @@
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect
+from django.contrib import admin
 from django.urls import path, include
+from django.shortcuts import redirect
 from chatbot.views import chatbot_view
 
 def index_redirect(request):
@@ -9,7 +9,9 @@ def index_redirect(request):
     return redirect('login')
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('', index_redirect, name='index'),
     path('', include('django.contrib.auth.urls')),
-    path('chatbot/', login_required(chatbot_view), name='chatbot'),
+    path('chatbot/', chatbot_view, name='chatbot'),
+    path('chat/', include('chatbot.urls')),
 ]
