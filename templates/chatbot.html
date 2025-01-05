@@ -17,7 +17,7 @@
     <link rel="preload" href="{% static 'assets/img/icone-mais.svg' %}" as="image">
 
     <!-- CSS principal -->
-    <link rel="stylesheet" href="{% static 'assets/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/chatbot.css' %}">
 </head>
 <body>
     <!-- Cabeçalho -->
@@ -27,7 +27,15 @@
             alt="Logo do assistente virtual EcoMart" 
             class="cabecalho__logo">
         <div class="cabecalho__acoes">
-            <!-- Opções adicionais podem ser adicionadas -->
+            {% if user.is_authenticated %}
+                <span class="cabecalho__usuario">Olá, {{ user.username }}</span>
+                <form method="POST" action="{% url 'logout' %}" class="logout-form">
+                    {% csrf_token %}
+                    <button type="submit" class="cabecalho__logout">
+                        Logout
+                    </button>
+                </form>
+            {% endif %}
         </div>
     </header>
 
@@ -36,7 +44,7 @@
         <!-- Chat -->
         <section class="chat container" id="chat" aria-live="polite">
             <p class="chat__bolha chat__bolha--bot">
-                Olá! Eu sou o assistente virtual da EcoMart<br><br>
+                Olá! Eu sou o assistente virtual da EcoMart<br>
                 Como posso te ajudar?
             </p>
         </section>
@@ -66,6 +74,6 @@
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="{% static 'assets/js/index.js' %}"></script>
+    <script src="{% static 'assets/js/chatbot.js' %}"></script>
 </body>
 </html>

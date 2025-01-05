@@ -163,3 +163,9 @@ JAZZMIN_SETTINGS = {
 
     # "show_ui_builder": "True",
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/chatbot/'
+LOGOUT_REDIRECT_URL = '/login/'

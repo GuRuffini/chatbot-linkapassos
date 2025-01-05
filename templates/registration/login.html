@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Chatbot</title>
     <link rel="stylesheet" href="{% static 'assets/css/_reset.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/index.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/login.css' %}">
 </head>
 <body>
@@ -18,17 +17,21 @@
         </div>
 
         <!-- Formulário de Login -->
-        <form class="login__form" method="POST" action="/login/">
+        <form class="login__form" method="POST" action="{% url 'login' %}">
             {% csrf_token %}
+            
             <div class="login__group">
-                <label for="username">Usuário</label>
-                <input type="text" id="username" name="username" placeholder="Digite seu usuário" required>
+                <label for="id_username" class="login__label">Usuário</label>
+                <input type="text" id="id_username" name="username" class="login__input" placeholder="Digite seu usuário" required>
             </div>
+
             <div class="login__group">
-                <label for="password">Senha</label>
-                <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+                <label for="id_password" class="login__label">Senha</label>
+                <input type="password" id="id_password" name="password" class="login__input" placeholder="Digite sua senha" required>
             </div>
+
             <button type="submit" class="login__button">Entrar</button>
+
         </form>
     </main>
 </body>

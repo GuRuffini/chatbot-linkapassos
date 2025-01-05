@@ -35,13 +35,40 @@ body {
 .cabecalho__acoes {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
+}
+
+.cabecalho__usuario {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #FFFFFF;
 }
 
 @media screen and (min-width: 1400px) {
     .cabecalho__acoes {
         gap: 2.8125rem;
     }
+}
+
+.cabecalho__logout {
+    background-color: #5385C3;
+    color: #FFFFFF;
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.cabecalho__logout:hover {
+    background-color: #1C5296;
+    color: #ced3e0;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 .main {
@@ -55,7 +82,7 @@ body {
 .chat {
     display: flex;
     flex-direction: column;
-    width: 100%; /* Garante que o chat ocupe toda a largura */
+    width: 100%;
     max-height: calc(100vh - 10rem - 5rem);
     scrollbar-width: none;
     overflow-y: auto;
@@ -69,7 +96,7 @@ body {
 }
 
 .chat__bolha {
-    max-width: 60%; /* Limita as bolhas a 60% da largura */
+    max-width: 60%;
     padding: 1.2rem 1.8rem;
     border-radius: 10px;
     font-size: 1.25rem;
@@ -85,10 +112,10 @@ body {
 
 .chat__bolha--bot {
     background-color: #5385C3;
-    align-self: flex-start; /* Alinha à esquerda */
-    margin-right: auto; /* Empurra para o lado esquerdo */
+    align-self: flex-start;
+    margin-right: auto;
     color: #FFFFFF;
-    text-align: left; /* Garante alinhamento do texto à esquerda */
+    text-align: left;
 }
 
 .chat__bolha--bot h1,
@@ -138,10 +165,10 @@ body {
 .chat__bolha--usuario {
     background-color: transparent;
     border: 1px solid #5385C3;
-    align-self: flex-end; /* Alinha à direita */
-    margin-left: auto; /* Empurra para o lado direito */
+    align-self: flex-end;
+    margin-left: auto;
     color: #CED3E0;
-    text-align: left; /* Garante alinhamento do texto à esquerda */
+    text-align: left;
 }
 
 .chat__bolha--usuario::before {
@@ -164,7 +191,7 @@ body {
     width: 2rem;
     position: absolute;
     top: 0;
-    right: -2.5rem; /* Ajusta o ícone do chatbot */
+    right: -2.5rem;
     background-image: url(../img/icone-chatbot.svg);
     background-repeat: no-repeat;
     background-position: center;
@@ -177,7 +204,7 @@ body {
     width: 2rem;
     position: absolute;
     top: 0;
-    left: -2.5rem; /* Ajusta o ícone do usuário */
+    left: -2.5rem;
     background-image: url(../img/icone-perfil.svg);
     background-repeat: no-repeat;
     background-position: center;
@@ -238,7 +265,7 @@ button:focus {
 
 .icone {
     display: inline-block;
-    height: 2rem; /* Ajuste do tamanho do ícone */
+    height: 2rem;
     width: 2rem;
     background-position: center;
     background-repeat: no-repeat;
