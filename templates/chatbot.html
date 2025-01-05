@@ -29,6 +29,11 @@
         <div class="cabecalho__acoes">
             {% if user.is_authenticated %}
                 <span class="cabecalho__usuario">Olá, {{ user.username }}</span>
+                {% if user.is_staff %}
+                    <a href="/admin/" class="cabecalho__icone" aria-label="Ir para o Admin">
+                        <img src="{% static 'assets/img/admin-icon.png' %}" alt="Admin">
+                    </a>
+                {% endif %}
                 <form method="POST" action="{% url 'logout' %}" class="logout-form">
                     {% csrf_token %}
                     <button type="submit" class="cabecalho__logout">

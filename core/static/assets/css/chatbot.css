@@ -71,6 +71,48 @@ body {
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
 }
 
+.cabecalho__icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #2b2b2b;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cabecalho__icone:hover {
+    background-color: #3a3a3a;
+    transform: scale(1.1);
+}
+
+.cabecalho__icone img {
+    width: 60%;
+    height: auto;
+}
+
+.admin-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-left: 1rem;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-icon {
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
+}
+
 .main {
     display: flex;
     flex-direction: column;

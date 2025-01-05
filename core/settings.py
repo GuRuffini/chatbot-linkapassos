@@ -133,20 +133,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
-
 SESSION_COOKIE_HTTPONLY = True
-
 SESSION_COOKIE_AGE = 1209600
-
 SESSION_SAVE_EVERY_REQUEST = True
 
 
 JAZZMIN_SETTINGS = {
     "site_title": "Linkapassos",
-
     "site_header": "Linkapassos",
-
     "site_brand": "Linkapassos",
+    "welcome_sign": "Bem vindo ao Linkapassos",
+    "copyright": "Linkapassos LTDA",
 
     "icons": {
         "auth": "fas fa-users-cog",
@@ -157,14 +154,21 @@ JAZZMIN_SETTINGS = {
         "chatbot.Communication": "fa-solid fa-comments",
     },
 
-    "welcome_sign": "Bem vindo ao Linkapassos",
-
-    "copyright": "Linkapassos LTDA",
+    "topmenu_links": [
+        {
+            "name": "Chatbot",
+            "url": "/chatbot/",
+            "permissions": ["auth.view_user"],
+            "icon": "fa-solid fa-comments",
+        },
+    ],
 
     # "show_ui_builder": "True",
 }
 
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/chatbot/'

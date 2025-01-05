@@ -16,23 +16,39 @@
             <img src="{% static 'assets/img/logo-chatbot.svg' %}" alt="Logo Chatbot">
         </div>
 
+        <!-- Exibição de mensagens de erro -->
+        {% if messages %}
+        <div class="login__error">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+
         <!-- Formulário de Login -->
-        <form class="login__form" method="POST" action="{% url 'login' %}">
+        <form class="login__form" method="POST" action="{% url 'login' %}" id="loginForm">
             {% csrf_token %}
             
             <div class="login__group">
                 <label for="id_username" class="login__label">Usuário</label>
-                <input type="text" id="id_username" name="username" class="login__input" placeholder="Digite seu usuário" required>
+                <input type="text" id="id_username" name="username" class="login__input" 
+                       placeholder="Digite seu usuário" required minlength="3" maxlength="50"
+                       pattern="[a-zA-Z0-9_.@-]+" title="Somente caracteres válidos são permitidos.">
             </div>
-
+        
             <div class="login__group">
                 <label for="id_password" class="login__label">Senha</label>
-                <input type="password" id="id_password" name="password" class="login__input" placeholder="Digite sua senha" required>
+                <input type="password" id="id_password" name="password" class="login__input" 
+                       placeholder="Digite sua senha" required minlength="8" maxlength="100"
+                       pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+" 
+                       title="A senha deve conter pelo menos uma letra maiúscula, uma minúscula, um número e um caractere especial.">
             </div>
-
+        
             <button type="submit" class="login__button">Entrar</button>
-
         </form>
     </main>
+
+    <!-- Referência ao script de validação -->
+    <script src="{% static 'assets/js/login_validation.js' %}"></script>
 </body>
 </html>
