@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 
 class CustomLoginView(LoginView):
-    template_name = 'login.html'
+    template_name = 'registration/login.html'
     redirect_authenticated_user = True
 
     def get_success_url(self):
