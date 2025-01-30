@@ -1,4 +1,4 @@
-# OpenAI: Curso 2
+# Linkapassos
 
 ## ⚙️ Configuração do Ambiente
 
